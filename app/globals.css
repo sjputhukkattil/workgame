@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Google Sans", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  --font-doc: Arial, "Helvetica Neue", sans-serif;
+
+  --color-docs-bg: #f9fbfd;
+  --color-docs-toolbar: #edf2fa;
+  --color-docs-border: #c4c7c5;
+  --color-docs-text: #202124;
+  --color-docs-muted: #5f6368;
+  --color-docs-blue: #1a73e8;
+  --color-docs-blue-hover: #1967d2;
+  --color-docs-link: #1155cc;
+  --color-rail-bg: #f6fafe;
+
+  --color-correct: #188038;
+  --color-correct-bg: #e6f4ea;
+  --color-wrong: #c5221f;
+  --color-wrong-bg: #fce8e6;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--color-docs-bg);
+  color: var(--color-docs-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+/* Hide caret for game inputs visually but keep input usable */
+.no-caret { caret-color: transparent; }
+
+/* Mimic Docs cursor blink */
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.docs-caret {
+  display: inline-block;
+  width: 1px;
+  height: 1.1em;
+  background: #202124;
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+  margin-left: 1px;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
