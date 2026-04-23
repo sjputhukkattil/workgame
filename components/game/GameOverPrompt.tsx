@@ -32,7 +32,7 @@ export default function GameOverPrompt({ yourScore, totalRounds, onSubmit, onPla
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Anonymous"
-            className="flex-1 px-3 py-1.5 border border-[var(--color-docs-border)] rounded outline-none focus:border-[var(--color-docs-blue)] text-sm"
+            className="flex-1 px-3 py-1.5 border border-[var(--color-docs-border)] rounded outline-none focus:border-[var(--color-docs-blue)] text-base sm:text-sm"
             spellCheck={false}
             maxLength={24}
           />

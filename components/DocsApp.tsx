@@ -36,6 +36,15 @@ export default function DocsApp() {
   const [resetKey, setResetKey] = useState(0);
   const [snapshot, setSnapshot] = useState<GameSnapshot>(INITIAL_SNAPSHOT);
 
+  const togglePause = useCallback(() => {
+    setPaused((p) => {
+      const next = !p;
+      if (next) setDecoy(pickDecoy());
+      else setDecoy(null);
+      return next;
+    });
+  }, []);
+
   // Boss-key: Esc toggles the decoy. Ctrl+Shift+Esc clears everything.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -48,17 +57,12 @@ export default function DocsApp() {
           return;
         }
         e.preventDefault();
-        setPaused((p) => {
-          const next = !p;
-          if (next) setDecoy(pickDecoy());
-          else setDecoy(null);
-          return next;
-        });
+        togglePause();
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, []);
+  }, [togglePause]);
 
   const handleStateChange = useCallback((s: GameSnapshot) => {
     setSnapshot(s);
@@ -80,15 +84,29 @@ export default function DocsApp() {
   const showScoreboard = !paused && snapshot.players.length > 0;
 
   return (
-    <div className="h-screen w-screen flex flex-col">
+    <div className="h-[100dvh] w-screen flex flex-col overflow-hidden">
       <TopBar
         title={paused && decoy ? decoy.title : title}
         onTitleChange={setTitle}
         players={paused ? [] : playersForChrome}
       />
-      <div className="px-3 pb-2">
+      <div className="px-0 sm:px-3 pb-1 sm:pb-2">
         <Toolbar />
       </div>
+
+      {showScoreboard && (
+        <Scoreboard
+          variant="bar"
+          className="md:hidden"
+          players={snapshot.players}
+          round={snapshot.round}
+          totalRounds={snapshot.totalRounds}
+          timeLeftMs={snapshot.timeLeftMs}
+          onOpenLeaderboard={() => setLeaderboardOpen(true)}
+          onTogglePause={togglePause}
+          paused={paused}
+        />
+      )}
 
       <div className="flex-1 flex overflow-hidden">
         <div className="flex-1 overflow-hidden">
@@ -109,6 +127,8 @@ export default function DocsApp() {
 
         {showScoreboard && (
           <Scoreboard
+            variant="side"
+            className="hidden md:flex"
             players={snapshot.players}
             round={snapshot.round}
             totalRounds={snapshot.totalRounds}
@@ -116,13 +136,15 @@ export default function DocsApp() {
           />
         )}
 
-        <RightRail onOpenLeaderboard={() => setLeaderboardOpen(true)} />
+        <div className="hidden md:flex">
+          <RightRail onOpenLeaderboard={() => setLeaderboardOpen(true)} />
+        </div>
       </div>
 
       <Leaderboard open={leaderboardOpen} onClose={() => setLeaderboardOpen(false)} />
 
       {!paused && (
-        <div className="absolute bottom-2 right-2 text-[10px] text-[var(--color-docs-muted)] select-none pointer-events-none opacity-60">
+        <div className="hidden md:block absolute bottom-2 right-2 text-[10px] text-[var(--color-docs-muted)] select-none pointer-events-none opacity-60">
           press <kbd className="px-1 border border-[var(--color-docs-border)] rounded">Esc</kbd> to look busy
         </div>
       )}

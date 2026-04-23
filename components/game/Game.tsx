@@ -324,12 +324,14 @@ export default function Game({ paused, onStateChange, onGameOver, onPlayAgain, r
                 onChange={(e) => setInput(e.target.value)}
                 disabled={youSolvedAt !== null || paused}
                 placeholder={youSolvedAt !== null ? "Solved! Waiting on others…" : "Type your guess and press Enter"}
-                className="flex-1 px-3 py-2 border border-[var(--color-docs-border)] rounded outline-none focus:border-[var(--color-docs-blue)] disabled:bg-gray-50 disabled:text-gray-400"
-                style={{ fontFamily: "var(--font-doc)", fontSize: 11 * 1.45 }}
+                className="flex-1 min-w-0 px-3 py-2 border border-[var(--color-docs-border)] rounded outline-none focus:border-[var(--color-docs-blue)] disabled:bg-gray-50 disabled:text-gray-400"
+                style={{ fontFamily: "var(--font-doc)", fontSize: 16 }}
                 spellCheck={false}
                 autoComplete="off"
                 autoCorrect="off"
                 autoCapitalize="characters"
+                inputMode="text"
+                enterKeyHint="send"
               />
             </div>
             {youSolvedAt !== null && (

@@ -15,7 +15,7 @@ const Sep = () => <div className="w-px h-5 bg-[var(--color-docs-border)] mx-1" /
 
 export default function Toolbar() {
   return (
-    <div className="flex items-center gap-0.5 px-3 py-1 mx-3 bg-[var(--color-docs-toolbar)] rounded-full text-[var(--color-docs-text)] text-sm overflow-hidden">
+    <div className="no-scrollbar flex items-center gap-0.5 px-3 py-1 mx-0 sm:mx-3 bg-[var(--color-docs-toolbar)] rounded-full text-[var(--color-docs-text)] text-sm overflow-x-auto whitespace-nowrap [&>*]:shrink-0">
       <ToolbarBtn title="Undo"><Undo /></ToolbarBtn>
       <ToolbarBtn title="Redo"><Redo /></ToolbarBtn>
       <ToolbarBtn title="Print"><Print /></ToolbarBtn>

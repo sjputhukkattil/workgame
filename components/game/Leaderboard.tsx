@@ -15,17 +15,17 @@ export default function Leaderboard({ open, onClose }: Props) {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-40 bg-black/30 flex items-center justify-center" onClick={onClose}>
+    <div className="fixed inset-0 z-40 bg-black/30 flex items-center justify-center p-3 sm:p-4" onClick={onClose}>
       <div
-        className="bg-white rounded-lg shadow-xl w-[640px] max-h-[80vh] flex flex-col"
+        className="bg-white rounded-lg shadow-xl w-full max-w-[640px] max-h-[85vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        <header className="px-6 py-4 border-b border-[var(--color-docs-border)] flex items-center justify-between">
+        <header className="px-4 sm:px-6 py-3 sm:py-4 border-b border-[var(--color-docs-border)] flex items-center justify-between">
           <div>
-            <div className="text-sm text-[var(--color-docs-muted)]">Linked sheet</div>
-            <div className="text-lg">Leaderboard</div>
+            <div className="text-xs sm:text-sm text-[var(--color-docs-muted)]">Linked sheet</div>
+            <div className="text-base sm:text-lg">Leaderboard</div>
           </div>
-          <button onClick={onClose} className="text-[var(--color-docs-muted)] hover:text-[var(--color-docs-text)] text-xl px-2">×</button>
+          <button onClick={onClose} className="text-[var(--color-docs-muted)] hover:text-[var(--color-docs-text)] text-xl px-2" aria-label="Close">×</button>
         </header>
         <div className="flex-1 overflow-y-auto">
           {entries.length === 0 ? (
@@ -33,24 +33,24 @@ export default function Leaderboard({ open, onClose }: Props) {
               No scores yet. Finish a game to add yours.
             </div>
           ) : (
-            <table className="w-full text-sm">
+            <table className="w-full text-xs sm:text-sm">
               <thead className="sticky top-0 bg-[var(--color-docs-toolbar)] text-[var(--color-docs-muted)]">
                 <tr>
-                  <th className="text-left px-4 py-2 font-medium w-12">#</th>
-                  <th className="text-left px-4 py-2 font-medium">Name</th>
-                  <th className="text-right px-4 py-2 font-medium">Score</th>
-                  <th className="text-right px-4 py-2 font-medium">Rounds</th>
-                  <th className="text-right px-4 py-2 font-medium">When</th>
+                  <th className="text-left px-2 sm:px-4 py-2 font-medium w-8 sm:w-12">#</th>
+                  <th className="text-left px-2 sm:px-4 py-2 font-medium">Name</th>
+                  <th className="text-right px-2 sm:px-4 py-2 font-medium">Score</th>
+                  <th className="text-right px-2 sm:px-4 py-2 font-medium hidden sm:table-cell">Rounds</th>
+                  <th className="text-right px-2 sm:px-4 py-2 font-medium">When</th>
                 </tr>
               </thead>
               <tbody>
                 {entries.map((e, i) => (
                   <tr key={i} className="border-t border-[var(--color-docs-border)]">
-                    <td className="px-4 py-2 text-[var(--color-docs-muted)] tabular-nums">{i + 1}</td>
-                    <td className="px-4 py-2">{e.name}</td>
-                    <td className="px-4 py-2 text-right tabular-nums font-medium">{e.score}</td>
-                    <td className="px-4 py-2 text-right tabular-nums">{e.rounds}</td>
-                    <td className="px-4 py-2 text-right text-[var(--color-docs-muted)]">{relativeTime(e.at)}</td>
+                    <td className="px-2 sm:px-4 py-2 text-[var(--color-docs-muted)] tabular-nums">{i + 1}</td>
+                    <td className="px-2 sm:px-4 py-2 truncate max-w-[120px] sm:max-w-none">{e.name}</td>
+                    <td className="px-2 sm:px-4 py-2 text-right tabular-nums font-medium">{e.score}</td>
+                    <td className="px-2 sm:px-4 py-2 text-right tabular-nums hidden sm:table-cell">{e.rounds}</td>
+                    <td className="px-2 sm:px-4 py-2 text-right text-[var(--color-docs-muted)] whitespace-nowrap">{relativeTime(e.at)}</td>
                   </tr>
                 ))}
               </tbody>
