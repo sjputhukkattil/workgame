@@ -20,6 +20,36 @@ export const DocsLogo = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+export const SheetsLogo = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 47 65" width={36} height={36} {...props}>
+    <path d="M29.375 0H4.583C2.062 0 0 2.063 0 4.583v55c0 2.521 2.063 4.584 4.583 4.584h36.667c2.521 0 4.584-2.063 4.584-4.584V16.5L29.375 0z" fill="#0F9D58"/>
+    <path d="M30.708 15.583L46.75 31.625V16.5L30.708 0v15.583z" fill="#87CEAC"/>
+    <path d="M11 24h25v17H11V24zm0 0v17m6.25-17v17M23.5 24v17m6.25-17v17M36 24v17M11 30h25M11 36h25" stroke="#fff" strokeWidth="1.5" fill="none"/>
+  </svg>
+);
+
+export const Grid9 = (p: SVGProps<SVGSVGElement>) => (
+  <svg width={20} height={20} viewBox="0 0 24 24" fill="currentColor" {...p}>
+    <circle cx="5" cy="5" r="1.6"/><circle cx="12" cy="5" r="1.6"/><circle cx="19" cy="5" r="1.6"/>
+    <circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>
+    <circle cx="5" cy="19" r="1.6"/><circle cx="12" cy="19" r="1.6"/><circle cx="19" cy="19" r="1.6"/>
+  </svg>
+);
+
+export const Sigma = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}>
+    <path d="M18 4H6l6 8-6 8h12" />
+  </svg>
+);
+
+export const FxIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}>
+    <path d="M6 20V8a3 3 0 0 1 3-3h2" />
+    <path d="M4 13h7" />
+    <path d="M13 8l6 12M19 8l-6 12" />
+  </svg>
+);
+
 export const Star = (p: SVGProps<SVGSVGElement>) => (
   <svg {...base(p)}>
     <polygon points="12 2 15 9 22 9 17 14 19 22 12 17 5 22 7 14 2 9 9 9 12 2" />

@@ -1,21 +1,51 @@
 "use client";
 
-import { DocsLogo, Star, Folder, Cloud, Comment, VideoCam, Lock } from "./Icons";
+import { DocsLogo, SheetsLogo, Star, Folder, Cloud, Comment, VideoCam, Lock, Grid9 } from "./Icons";
 import Avatar from "./Avatar";
-import type { Player } from "@/lib/types";
+import type { AppMode, Player } from "@/lib/types";
 
 type Props = {
   title: string;
   onTitleChange: (s: string) => void;
   players: Player[];
+  mode?: AppMode;
+  onModeChange?: (m: AppMode) => void;
 };
 
-export default function TopBar({ title, onTitleChange, players }: Props) {
+export default function TopBar({ title, onTitleChange, players, mode = "docs", onModeChange }: Props) {
   const others = players.filter((p) => !p.isYou).slice(0, 4);
   return (
     <div className="flex items-center px-3 py-1.5 gap-2 bg-[var(--color-docs-bg)]">
-      <div className="shrink-0">
-        <DocsLogo />
+      <div className="relative group shrink-0">
+        <button
+          className="p-1 rounded hover:bg-black/5 inline-flex items-center gap-1"
+          title={onModeChange ? "Switch to Sheets" : "Docs"}
+          aria-label="Switch app"
+          onClick={() => onModeChange?.("sheets")}
+        >
+          <DocsLogo />
+          {onModeChange && <Grid9 width={14} height={14} />}
+        </button>
+        {onModeChange && (
+          <div className="hidden sm:group-hover:flex absolute left-0 top-full mt-1 bg-white border border-[var(--color-docs-border)] rounded shadow-lg p-1 gap-1 z-50">
+            <button
+              onClick={() => onModeChange("docs")}
+              className={"flex flex-col items-center px-3 py-2 rounded hover:bg-black/5 " + (mode === "docs" ? "bg-blue-50" : "")}
+              title="Open in Docs"
+            >
+              <DocsLogo width={32} height={32} />
+              <span className="text-[10px] text-[var(--color-docs-muted)] mt-1">Docs</span>
+            </button>
+            <button
+              onClick={() => onModeChange("sheets")}
+              className={"flex flex-col items-center px-3 py-2 rounded hover:bg-black/5 " + (mode === "sheets" ? "bg-green-50" : "")}
+              title="Open in Sheets"
+            >
+              <SheetsLogo width={32} height={32} />
+              <span className="text-[10px] text-[var(--color-docs-muted)] mt-1">Sheets</span>
+            </button>
+          </div>
+        )}
       </div>
 
       <div className="flex flex-col min-w-0 flex-1">

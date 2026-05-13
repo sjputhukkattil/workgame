@@ -1,65 +1,75 @@
 import type { Word } from "./types";
 
+// Clue order convention: [0] cryptic/clever, [1] medium nudge, [2] obvious giveaway.
+// Answers are always common English words. Clues do the work, not the vocabulary.
 export const WORDS: Word[] = [
   // EASY
-  { id: "apple", answer: "APPLE", difficulty: "easy", clues: ["A common fruit", "Keeps the doctor away", "Often red or green"] },
-  { id: "dog", answer: "DOG", difficulty: "easy", clues: ["A four-legged pet", "Best friend of humans", "Says woof"] },
-  { id: "sun", answer: "SUN", difficulty: "easy", clues: ["A bright object", "Rises in the east", "Center of our solar system"] },
-  { id: "book", answer: "BOOK", difficulty: "easy", clues: ["You can read it", "Has pages", "Found in libraries"] },
-  { id: "rain", answer: "RAIN", difficulty: "easy", clues: ["Falls from the sky", "Makes things wet", "Comes from clouds"] },
-  { id: "cat", answer: "CAT", difficulty: "easy", clues: ["A common pet", "Says meow", "Loves to nap"] },
-  { id: "tree", answer: "TREE", difficulty: "easy", clues: ["Has leaves and bark", "Grows in forests", "Provides shade"] },
-  { id: "car", answer: "CAR", difficulty: "easy", clues: ["A common vehicle", "Has four wheels", "Runs on fuel or electricity"] },
-  { id: "milk", answer: "MILK", difficulty: "easy", clues: ["A white liquid", "Comes from cows", "Goes well with cereal"] },
-  { id: "moon", answer: "MOON", difficulty: "easy", clues: ["Seen at night", "Has phases", "Earth's natural satellite"] },
-  { id: "fish", answer: "FISH", difficulty: "easy", clues: ["Lives in water", "Has fins", "Often eaten on Fridays"] },
-  { id: "bird", answer: "BIRD", difficulty: "easy", clues: ["Has feathers", "Most can fly", "Lays eggs"] },
-  { id: "house", answer: "HOUSE", difficulty: "easy", clues: ["A place to live", "Has rooms", "Has a roof"] },
-  { id: "shoe", answer: "SHOE", difficulty: "easy", clues: ["You wear it", "Comes in pairs", "Protects your feet"] },
-  { id: "ball", answer: "BALL", difficulty: "easy", clues: ["A round object", "Used in many sports", "Bounces"] },
-  { id: "phone", answer: "PHONE", difficulty: "easy", clues: ["A device for talking", "Often kept in a pocket", "Rings when called"] },
-  { id: "chair", answer: "CHAIR", difficulty: "easy", clues: ["You sit on it", "Usually has four legs", "Found around tables"] },
-  { id: "key", answer: "KEY", difficulty: "easy", clues: ["Opens a lock", "Made of metal", "Often kept on a ring"] },
-  { id: "snow", answer: "SNOW", difficulty: "easy", clues: ["Falls from the sky", "White and cold", "Comes in winter"] },
-  { id: "fire", answer: "FIRE", difficulty: "easy", clues: ["Hot and bright", "Can be dangerous", "Used for cooking"] },
+  { id: "apple", answer: "APPLE", difficulty: "easy", clues: ["Newton's gravity tutor", "Doctor repellent if eaten daily", "Crisp red or green fruit"] },
+  { id: "dog", answer: "DOG", difficulty: "easy", clues: ["God, but mirrored", "Pavlov's drooling subject", "Says woof, fetches sticks"] },
+  { id: "sun", answer: "SUN", difficulty: "easy", clues: ["8 minutes of light away", "Rises in the east", "Bright yellow star, daytime"] },
+  { id: "book", answer: "BOOK", difficulty: "easy", clues: ["Has a spine but no bones", "You read it page by page", "Bound paper with chapters"] },
+  { id: "rain", answer: "RAIN", difficulty: "easy", clues: ["Sky's leak", "Cats and dogs, allegedly", "Wet drops from clouds"] },
+  { id: "cat", answer: "CAT", difficulty: "easy", clues: ["Schrödinger's iconic pet", "Says meow, knocks cups off tables", "Furry pet, hates baths"] },
+  { id: "tree", answer: "TREE", difficulty: "easy", clues: ["Has rings but no fingers", "Where leaves call home", "Plant with trunk and branches"] },
+  { id: "car", answer: "CAR", difficulty: "easy", clues: ["Henry Ford's assembly hit", "Four wheels, one driver", "Vehicle you drive on roads"] },
+  { id: "milk", answer: "MILK", difficulty: "easy", clues: ["Cow's daily contribution", "Pours white, goes with cookies", "White drink from cows"] },
+  { id: "moon", answer: "MOON", difficulty: "easy", clues: ["Apollo 11's target", "Waxes and wanes", "Bright orb seen at night"] },
+  { id: "fish", answer: "FISH", difficulty: "easy", clues: ["Breathes water, can't blink", "Pisces' symbol", "Swims with fins, has scales"] },
+  { id: "bird", answer: "BIRD", difficulty: "easy", clues: ["Dinosaur's flying cousin", "Lays eggs, often sings", "Feathered animal that flies"] },
+  { id: "house", answer: "HOUSE", difficulty: "easy", clues: ["Three little pigs built three", "Place with roof and rooms", "Where you live"] },
+  { id: "shoe", answer: "SHOE", difficulty: "easy", clues: ["Cinderella lost one at midnight", "Comes in pairs, has laces", "Worn on your feet"] },
+  { id: "ball", answer: "BALL", difficulty: "easy", clues: ["Round in shape, round in dance", "Bounces, used in sport", "Round bouncy object"] },
+  { id: "phone", answer: "PHONE", difficulty: "easy", clues: ["Bell rang the first one", "Pocket-sized, addictive", "Rings, makes calls"] },
+  { id: "chair", answer: "CHAIR", difficulty: "easy", clues: ["Four legs, can't walk", "Found around tables", "You sit on it"] },
+  { id: "key", answer: "KEY", difficulty: "easy", clues: ["Houdini escaped many", "Pairs with a lock", "Small metal thing that opens locks"] },
+  { id: "snow", answer: "SNOW", difficulty: "easy", clues: ["Rain's cold cousin", "Frosty's building material", "White flakes that fall in winter"] },
+  { id: "fire", answer: "FIRE", difficulty: "easy", clues: ["Prometheus's stolen gift", "What you light on a stove", "Hot and bright, burns things"] },
+  { id: "water", answer: "WATER", difficulty: "easy", clues: ["H₂O, technically", "Fish swim in it, you drink it", "Clear liquid, fills oceans"] },
+  { id: "sleep", answer: "SLEEP", difficulty: "easy", clues: ["Sheep-counting outcome", "Dreams' delivery method", "What you do at night with eyes closed"] },
 
   // MEDIUM
-  { id: "guitar", answer: "GUITAR", difficulty: "medium", clues: ["A musical instrument", "Has six strings", "Often used in rock music"] },
-  { id: "rocket", answer: "ROCKET", difficulty: "medium", clues: ["Travels at high speed", "Goes to space", "Built by NASA and SpaceX"] },
-  { id: "pirate", answer: "PIRATE", difficulty: "medium", clues: ["Sails the seas", "Often has a parrot", "Buries treasure"] },
-  { id: "castle", answer: "CASTLE", difficulty: "medium", clues: ["A large stone building", "Has walls and towers", "Where kings once lived"] },
-  { id: "dragon", answer: "DRAGON", difficulty: "medium", clues: ["A mythical creature", "Breathes fire", "Often guards treasure"] },
-  { id: "ocean", answer: "OCEAN", difficulty: "medium", clues: ["A vast body of water", "Salty", "Covers most of Earth"] },
-  { id: "pizza", answer: "PIZZA", difficulty: "medium", clues: ["A popular food", "Round with toppings", "Originated in Italy"] },
-  { id: "coffee", answer: "COFFEE", difficulty: "medium", clues: ["A morning drink", "Made from beans", "Contains caffeine"] },
-  { id: "winter", answer: "WINTER", difficulty: "medium", clues: ["A cold season", "Comes after autumn", "Brings snow"] },
-  { id: "doctor", answer: "DOCTOR", difficulty: "medium", clues: ["Helps sick people", "Wears a white coat", "Studied medicine"] },
-  { id: "camera", answer: "CAMERA", difficulty: "medium", clues: ["Captures images", "Has a lens", "Used by photographers"] },
-  { id: "robot", answer: "ROBOT", difficulty: "medium", clues: ["A machine that moves", "Often programmable", "Featured in science fiction"] },
-  { id: "ninja", answer: "NINJA", difficulty: "medium", clues: ["A stealthy warrior", "Wears black", "From feudal Japan"] },
-  { id: "bridge", answer: "BRIDGE", difficulty: "medium", clues: ["Crosses a gap", "Made of steel or stone", "Used by cars or people"] },
-  { id: "magnet", answer: "MAGNET", difficulty: "medium", clues: ["Attracts metal", "Has two poles", "Sticks to fridges"] },
-  { id: "violin", answer: "VIOLIN", difficulty: "medium", clues: ["A stringed instrument", "Played with a bow", "Smaller than a cello"] },
-  { id: "tiger", answer: "TIGER", difficulty: "medium", clues: ["A big cat", "Has stripes", "Lives in Asia"] },
-  { id: "engine", answer: "ENGINE", difficulty: "medium", clues: ["Powers a vehicle", "Burns fuel or runs on electricity", "Has many moving parts"] },
+  { id: "guitar", answer: "GUITAR", difficulty: "medium", clues: ["Hendrix once set one on fire", "Has six strings and a neck", "Played in most rock bands"] },
+  { id: "rocket", answer: "ROCKET", difficulty: "medium", clues: ["Goes up, fights gravity", "SpaceX builds them", "Vehicle that flies to space"] },
+  { id: "pirate", answer: "PIRATE", difficulty: "medium", clues: ["Says 'arrr' and 'matey'", "Flies the Jolly Roger", "Sea bandit with treasure and parrot"] },
+  { id: "castle", answer: "CASTLE", difficulty: "medium", clues: ["Moats surround them", "Kings and queens lived here", "Big stone fortress"] },
+  { id: "dragon", answer: "DRAGON", difficulty: "medium", clues: ["Smaug's species", "Khaleesi had three", "Mythical fire-breathing creature"] },
+  { id: "ocean", answer: "OCEAN", difficulty: "medium", clues: ["Covers 71% of Earth", "Salty and vast", "Big body of salt water"] },
+  { id: "pizza", answer: "PIZZA", difficulty: "medium", clues: ["Naples' edible export", "Round, cheesy, sliced into 8", "Italian food with cheese and toppings"] },
+  { id: "coffee", answer: "COFFEE", difficulty: "medium", clues: ["Monday morning's hero", "Made from roasted beans", "Hot caffeinated drink"] },
+  { id: "winter", answer: "WINTER", difficulty: "medium", clues: ["The Starks were warning about it", "Comes after autumn", "Cold season with snow"] },
+  { id: "doctor", answer: "DOCTOR", difficulty: "medium", clues: ["Wears a white coat and a stethoscope", "Hippocrates' modern heir", "Person who treats sick people"] },
+  { id: "camera", answer: "CAMERA", difficulty: "medium", clues: ["Click, flash, captured", "Has a lens and shutter", "Used by photographers to take pictures"] },
+  { id: "robot", answer: "ROBOT", difficulty: "medium", clues: ["Word coined in a 1920 Czech play", "Asimov gave it three laws", "Programmable mechanical being"] },
+  { id: "ninja", answer: "NINJA", difficulty: "medium", clues: ["Black-clad and silent", "Throws stars, climbs walls", "Feudal Japanese stealth fighter"] },
+  { id: "bridge", answer: "BRIDGE", difficulty: "medium", clues: ["London's falls down in a song", "Connects two sides of a river", "Crosses gaps for cars or people"] },
+  { id: "magnet", answer: "MAGNET", difficulty: "medium", clues: ["Iron's invisible suitor", "Has a north and south end", "Sticks to your fridge"] },
+  { id: "violin", answer: "VIOLIN", difficulty: "medium", clues: ["Stradivari built the famous ones", "Played with a bow, four strings", "Small bowed string instrument"] },
+  { id: "tiger", answer: "TIGER", difficulty: "medium", clues: ["Orange with black stripes", "Tony cereal mascot", "Big striped wild cat"] },
+  { id: "engine", answer: "ENGINE", difficulty: "medium", clues: ["Vehicle's mechanical heart", "Burns fuel or runs on volts", "Powers cars and trains"] },
+  { id: "library", answer: "LIBRARY", difficulty: "medium", clues: ["Alexandria had a famous one", "Quiet zone full of books", "Building where you borrow books"] },
+  { id: "compass", answer: "COMPASS", difficulty: "medium", clues: ["Magnetic guide", "Has a needle that points north", "Navigation tool with a needle"] },
+  { id: "garden", answer: "GARDEN", difficulty: "medium", clues: ["Eden was the first one", "Where vegetables grow on purpose", "Plot of land with flowers or plants"] },
+  { id: "thunder", answer: "THUNDER", difficulty: "medium", clues: ["Thor's hammer sound effect", "Comes right after lightning", "Loud rumble during storms"] },
 
   // HARD
-  { id: "compass", answer: "COMPASS", difficulty: "hard", clues: ["A navigation tool", "Has a magnetic needle", "Always points north"] },
-  { id: "echo", answer: "ECHO", difficulty: "hard", clues: ["A reflected sound", "Heard in caves", "A repetition of yourself"] },
-  { id: "phoenix", answer: "PHOENIX", difficulty: "hard", clues: ["A mythical bird", "Reborn from ashes", "Also a city in Arizona"] },
-  { id: "labyrinth", answer: "LABYRINTH", difficulty: "hard", clues: ["A complex maze", "Easy to get lost in", "Famous one held a Minotaur"] },
-  { id: "telescope", answer: "TELESCOPE", difficulty: "hard", clues: ["Makes things look closer", "Used to see stars", "Galileo improved it"] },
-  { id: "volcano", answer: "VOLCANO", difficulty: "hard", clues: ["A mountain that erupts", "Spews lava", "Pompeii was destroyed by one"] },
-  { id: "pyramid", answer: "PYRAMID", difficulty: "hard", clues: ["A four-sided structure", "Found in Egypt", "Built as a tomb"] },
-  { id: "vampire", answer: "VAMPIRE", difficulty: "hard", clues: ["A nocturnal creature", "Drinks blood", "Afraid of garlic"] },
-  { id: "mirror", answer: "MIRROR", difficulty: "hard", clues: ["Shows your reflection", "Made of glass", "Said to bring bad luck if broken"] },
-  { id: "thunder", answer: "THUNDER", difficulty: "hard", clues: ["A loud sound", "Follows lightning", "Heard during storms"] },
-  { id: "diamond", answer: "DIAMOND", difficulty: "hard", clues: ["A precious gemstone", "The hardest natural material", "Often set in rings"] },
-  { id: "octopus", answer: "OCTOPUS", difficulty: "hard", clues: ["A sea creature", "Has eight arms", "Can change color"] },
-  { id: "harvest", answer: "HARVEST", difficulty: "hard", clues: ["The reaping of crops", "Happens in autumn", "A celebration of the season"] },
-  { id: "shadow", answer: "SHADOW", difficulty: "hard", clues: ["Cast by light", "Follows you around", "Longer at sunrise and sunset"] },
-  { id: "anchor", answer: "ANCHOR", difficulty: "hard", clues: ["Holds a ship in place", "Heavy and metal", "Dropped to the sea floor"] },
-  { id: "wizard", answer: "WIZARD", difficulty: "hard", clues: ["Practices magic", "Often has a long beard", "Wears robes and a pointed hat"] },
+  { id: "echo", answer: "ECHO", difficulty: "hard", clues: ["Sound's lazy mimic", "Heard in canyons and caves", "Sound that bounces back"] },
+  { id: "phoenix", answer: "PHOENIX", difficulty: "hard", clues: ["Rises from its own ashes", "Harry Potter had one named Fawkes", "Mythical fiery bird reborn from ash"] },
+  { id: "telescope", answer: "TELESCOPE", difficulty: "hard", clues: ["Galileo's stargazing tool", "Hubble's namesake instrument", "Lets you see far-away stars"] },
+  { id: "volcano", answer: "VOLCANO", difficulty: "hard", clues: ["Earth's pressure valve", "Pompeii's destroyer", "Mountain that erupts with lava"] },
+  { id: "pyramid", answer: "PYRAMID", difficulty: "hard", clues: ["Egyptian tomb shape", "Four triangular sides meet at a point", "Triangular stone monument in Egypt"] },
+  { id: "vampire", answer: "VAMPIRE", difficulty: "hard", clues: ["Garlic-averse, sun-allergic", "Dracula's species", "Blood-drinking undead creature"] },
+  { id: "mirror", answer: "MIRROR", difficulty: "hard", clues: ["Honest in reverse", "Snow White's stepmother consulted one", "Glass that shows your reflection"] },
+  { id: "diamond", answer: "DIAMOND", difficulty: "hard", clues: ["Carbon under heavy pressure", "A girl's best friend, allegedly", "Hardest, sparkliest gemstone"] },
+  { id: "octopus", answer: "OCTOPUS", difficulty: "hard", clues: ["Has three hearts and eight arms", "Camouflage champion of the sea", "Sea creature with eight arms"] },
+  { id: "shadow", answer: "SHADOW", difficulty: "hard", clues: ["Follows you on sunny days", "Light's silhouetted absence", "Dark shape made by blocking light"] },
+  { id: "anchor", answer: "ANCHOR", difficulty: "hard", clues: ["Heavy keeper of ships", "Drops to the seabed", "Iron hook that holds a boat still"] },
+  { id: "wizard", answer: "WIZARD", difficulty: "hard", clues: ["Gandalf's day job", "Wears a robe, waves a staff", "Magic-user with pointy hat"] },
+  { id: "puzzle", answer: "PUZZLE", difficulty: "hard", clues: ["A thousand pieces of patience", "Jigsaw or crossword", "Brain-teaser to solve"] },
+  { id: "riddle", answer: "RIDDLE", difficulty: "hard", clues: ["The Sphinx asked Oedipus one", "Question with a tricky answer", "A puzzling question or word game"] },
+  { id: "river", answer: "RIVER", difficulty: "hard", clues: ["Flows to the sea", "The Nile, the Amazon, the Thames", "Long flowing body of water"] },
+  { id: "clock", answer: "CLOCK", difficulty: "hard", clues: ["Has two hands but no fingers", "Tick-tocks all day", "Tells you the time"] },
+  { id: "ladder", answer: "LADDER", difficulty: "hard", clues: ["Unlucky to walk under one", "Way up to a roof or attic", "Frame with rungs you climb"] },
+  { id: "feather", answer: "FEATHER", difficulty: "hard", clues: ["Light as itself, idiomatically", "Birds wear thousands", "Soft thing covering a bird"] },
 ];
 
 export function shuffle<T>(arr: T[]): T[] {
@@ -71,17 +81,39 @@ export function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
+// 10-round mix: 4 easy / 4 medium / 2 hard. All answers are common English words;
+// the cryptic first clue does the work, not obscure vocabulary.
 export function pickRoundWords(count: number): Word[] {
   const easy = shuffle(WORDS.filter((w) => w.difficulty === "easy"));
   const med = shuffle(WORDS.filter((w) => w.difficulty === "medium"));
   const hard = shuffle(WORDS.filter((w) => w.difficulty === "hard"));
-  // 4 easy, 4 medium, 2 hard for a 10-round game
-  const easyCount = Math.round(count * 0.4);
-  const medCount = Math.round(count * 0.4);
-  const hardCount = count - easyCount - medCount;
+
+  if (count === 10) {
+    return shuffle([
+      ...easy.slice(0, 4),
+      ...med.slice(0, 4),
+      ...hard.slice(0, 2),
+    ]);
+  }
+
+  // Generic fallback.
+  const easyCount = Math.max(1, Math.round(count * 0.4));
+  const medCount = Math.max(1, Math.round(count * 0.4));
+  const hardCount = Math.max(0, count - easyCount - medCount);
   return shuffle([
     ...easy.slice(0, easyCount),
     ...med.slice(0, medCount),
     ...hard.slice(0, hardCount),
   ]);
+}
+
+// Reveal schedule per difficulty (ms when clue [1] and clue [2] become visible).
+// Bumped back faster so the game stays snappy.
+export function clueRevealSchedule(d: Word["difficulty"]): [number, number] {
+  switch (d) {
+    case "easy": return [7000, 16000];
+    case "medium": return [9000, 19000];
+    case "hard": return [11000, 21000];
+    case "expert": return [13000, 23000];
+  }
 }

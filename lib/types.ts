@@ -1,4 +1,4 @@
-export type Difficulty = "easy" | "medium" | "hard";
+export type Difficulty = "easy" | "medium" | "hard" | "expert";
 
 export type Word = {
   id: string;
@@ -33,3 +33,5 @@ export type RoundResult = {
 };
 
 export type Phase = "intro" | "playing" | "between" | "gameover";
+
+export type AppMode = "docs" | "sheets";

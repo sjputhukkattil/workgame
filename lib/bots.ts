@@ -29,7 +29,11 @@ export function botSolveTime(skill: number, word: Word, roundDurationMs: number)
   if (Math.random() > skill + 0.1) return null;
 
   // Difficulty multiplier
-  const difficultyMul = word.difficulty === "easy" ? 0.7 : word.difficulty === "medium" ? 1 : 1.4;
+  const difficultyMul =
+    word.difficulty === "easy" ? 0.7
+    : word.difficulty === "medium" ? 1
+    : word.difficulty === "hard" ? 1.4
+    : 1.9; // expert
 
   // Base time: skill 1.0 -> ~3s, skill 0.5 -> ~18s
   const base = (1 - skill) * 28000 + 2500;

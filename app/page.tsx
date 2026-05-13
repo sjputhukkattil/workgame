@@ -1,5 +1,5 @@
-import DocsApp from "@/components/DocsApp";
+import RootApp from "@/components/RootApp";
 
 export default function Page() {
-  return <DocsApp />;
+  return <RootApp />;
 }
